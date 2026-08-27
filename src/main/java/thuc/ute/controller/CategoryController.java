@@ -1,11 +1,6 @@
 package thuc.ute.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -18,7 +13,7 @@ import jakarta.servlet.http.Part;
 import thuc.ute.entity.Category;
 import thuc.ute.service.ICategoryService;
 import thuc.ute.service.impl.CategoryServiceImpl;
-import thuc.ute.util.constants;
+import thuc.ute.util.CloudinaryUtil;
 
 @MultipartConfig()
 @WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add", "/admin/category/insert",
@@ -70,32 +65,15 @@ public class CategoryController extends HttpServlet {
             category.setCategoryname(categoryname);
             category.setStatus(status);
 
-            String fname = "";
-            String uploadPath = constants.DIR;
-            File uploadDir = new File(uploadPath);
+            Part part = req.getPart("images1");
+            String imageUrl = CloudinaryUtil.uploadImage(part, "categories");
 
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            try {
-                Part part = req.getPart("images1");
-
-                if (part.getSize() > 0) {
-                    String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                    int index = filename.lastIndexOf(".");
-                    String ext = filename.substring(index + 1);
-                    fname = System.currentTimeMillis() + "." + ext;
-
-                    part.write(uploadPath + "/" + fname);
-                    category.setImages(fname);
-                } else if (images != null) {
-                    category.setImages(images);
-                } else {
-                    category.setImages("avatar.png");
-                }
-            } catch (FileNotFoundException fne) {
-                fne.printStackTrace();
+            if (imageUrl != null) {
+                category.setImages(imageUrl);
+            } else if (images != null && !images.isBlank()) {
+                category.setImages(images);
+            } else {
+                category.setImages("avatar.png");
             }
 
             cateService.insert(category);
@@ -114,48 +92,19 @@ public class CategoryController extends HttpServlet {
             category.setCategoryname(categoryname);
             category.setStatus(status);
 
-            String fname = "";
-            String uploadPath = constants.DIR;
-            File uploadDir = new File(uploadPath);
+            Part part = req.getPart("images1");
+            String imageUrl = CloudinaryUtil.uploadImage(part, "categories");
 
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            try {
-                Part part = req.getPart("images1");
-
-                if (part.getSize() > 0) {
-                    if (fileold != null && !fileold.startsWith("https")) {
-                        deleteFile(uploadPath + "\\" + fileold);
-                    }
-
-                    String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                    int index = filename.lastIndexOf(".");
-                    String ext = filename.substring(index + 1);
-                    fname = System.currentTimeMillis() + "." + ext;
-
-                    part.write(uploadPath + "/" + fname);
-                    category.setImages(fname);
-                } else if (images != null) {
-                    category.setImages(images);
-                } else {
-                    category.setImages(fileold);
-                }
-            } catch (FileNotFoundException fne) {
-                fne.printStackTrace();
+            if (imageUrl != null) {
+                category.setImages(imageUrl);
+            } else if (images != null && !images.isBlank()) {
+                category.setImages(images);
+            } else {
+                category.setImages(fileold);
             }
 
             cateService.update(category);
             resp.sendRedirect(req.getContextPath() + "/admin/categories");
-        }
-    }
-
-    public static void deleteFile(String filePath) throws IOException {
-        Path path = Paths.get(filePath);
-
-        if (Files.exists(path)) {
-            Files.delete(path);
         }
     }
 }

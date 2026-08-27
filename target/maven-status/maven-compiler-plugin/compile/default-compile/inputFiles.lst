@@ -6,4 +6,5 @@ D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\entity\Category.java
 D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\entity\Video.java
 D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\service\ICategoryService.java
 D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\service\impl\CategoryServiceImpl.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\util\CloudinaryUtil.java
 D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\util\constants.java
