@@ -1,0 +1,44 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<c:url value="/admin/categories" var="categoryListUrl"/>
+<c:url value="/admin/category/add" var="categoryAddUrl"/>
+
+<aside class="sidebar">
+    <a href="${categoryListUrl}" class="brand">
+        <span class="brand-mark">C</span>
+        <span>
+            <strong>Category</strong>
+            <small>JPA Admin</small>
+        </span>
+    </a>
+
+    <div class="profile">
+        <img
+            src="https://res.cloudinary.com/gnht4fer/image/upload/v1787802709/categories/pzoxspdcewsifih9kssx.jpg"
+            class="avatar"
+            alt="Admin">
+        <div>
+            <strong>Admin</strong>
+            <span>Quản trị viên</span>
+        </div>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="${categoryListUrl}" class="menu-item">
+            <span class="menu-icon">▦</span>
+            Danh sách danh mục
+        </a>
+        <a href="${categoryAddUrl}" class="menu-item">
+            <span class="menu-icon">＋</span>
+            Thêm danh mục
+        </a>
+        <span class="menu-item disabled">
+            <span class="menu-icon">□</span>
+            Video
+        </span>
+        <span class="menu-item disabled">
+            <span class="menu-icon">○</span>
+            Tài khoản
+        </span>
+    </nav>
+</aside>
