@@ -1,0 +1,9 @@
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\config\JPAConfig.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\controller\CategoryController.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\dao\CategoryDao.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\dao\ICategoryDao.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\entity\Category.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\entity\Video.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\service\ICategoryService.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\service\impl\CategoryServiceImpl.java
+D:\App\SpringBoot\Ex2_JPA_CRUD\src\main\java\thuc\ute\util\constants.java
